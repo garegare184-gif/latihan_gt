@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Officer extends Model
 {
-    use HasFactory;
-    protected $fillable = ['iduser'];
-
     public function user()
     {
         return $this->belongsTo(User::class, 'iduser');
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'petugas');
     }
 }
 

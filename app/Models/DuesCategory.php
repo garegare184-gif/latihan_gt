@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DuesCategory extends Model
 {
-    use HasFactory;
-    protected $fillable = ['period','nominal','status'];
+    public function duesMembers()
+    {
+        return $this->hasMany(DuesMember::class, 'idduescategory');
+    }
 }
