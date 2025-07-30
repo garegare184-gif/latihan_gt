@@ -23,8 +23,14 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/home');
-        }
+
+        if (Auth::user()->warga === 'admin') {    
+            return redirect()->intended('home');
+        } else {
+        return redirect('/warga'); // warga
+    }
+}
+        
 
         return back()->withErrors([
             'username' => 'Username atau password salah.',
