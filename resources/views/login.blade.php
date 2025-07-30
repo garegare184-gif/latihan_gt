@@ -11,7 +11,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-4">
-            <h3 class="text-center mb-4">Login</h3>
+            <h3 class="text-center mb-4">Silahkan Login</h3>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="mb-0">
@@ -31,12 +31,12 @@
                            id="username" name="username" value="{{ old('username') }}" required autofocus>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="password">Password</label>
                     <input type="password"
                            class="form-control @error('password') is-invalid @enderror"
                            id="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <button type="submit" class="btn btn-danger w-100">Login</button>
             </form>
         </div>
     </div>
