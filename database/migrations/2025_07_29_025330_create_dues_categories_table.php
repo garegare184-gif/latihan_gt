@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dues_categories', function (Blueprint $table) {
-           $table->id();
-           $table->string('period');    // contoh: Januari 2025
-           $table->integer('nominal');  // jumlah uang
-           $table->enum('status', ['aktif','nonaktif'])->default('aktif');
-           $table->timestamps();
-});
-
+            $table->id(); // otomatis unsignedBigInteger
+            $table->string('name');  // contoh: iuran kebersihan
+            $table->text('description')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**

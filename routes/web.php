@@ -14,6 +14,13 @@ Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
 
+Route::get('/admin', function () {
+    return view('admin');
+})->middleware('auth');
+
+Route::get('/warga', function () {
+    return view('warga');
+})->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome');
