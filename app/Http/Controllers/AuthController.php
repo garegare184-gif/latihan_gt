@@ -1,33 +1,30 @@
 <?php
 
-// app/Http/Controllers/AuthController.php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('login');
     }
+
 
     public function login(Request $request)
     {
-        // Validasi input
         $credentials = $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        // Coba login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('/dashboard'); // Redirect ke halaman setelah login
+            return redirect()->intended('/home')->with('success', 'Selamat datang, ' . Auth::user()->name . '!');
         }
 
         return back()->withErrors([
@@ -38,11 +35,30 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
         return redirect('/login');
     }
-}
 
+    public function showRegisterForm()
+    {
+        return view('register');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name'     => 'required|string|max:255',
+            'username' => 'required|string|unique:users,username',
+            'password' => 'required|string|min:6',
+        ]);
+
+        User::create([
+            'name'     => $request->name,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect('/login')->with('success', 'Pendaftaran berhasil, silakan login!');
+    }
+}
