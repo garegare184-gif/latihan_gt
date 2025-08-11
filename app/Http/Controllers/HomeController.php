@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    // supaya halaman home hanya bisa diakses user login
+    /**
+     * Pastikan hanya user yang login yang bisa akses hom
+    }
 
+    /**
+     * Tampilkan halaman home
+     */
     public function index()
     {
-        // kirim data user ke view home.blade.php
-        return view('home', [
-            'user' => Auth::user()
-        ]);
+        return view('home'); // resources/views/home.blade.php
     }
 }
