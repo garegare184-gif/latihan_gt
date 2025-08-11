@@ -28,6 +28,7 @@
     <div class="register-card col-md-6 mx-auto">
         <h3 class="text-center mb-4">Daftar Warga Baru</h3>
         <form action="/register" method="POST">
+            @csrf
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Lengkap</label>
                 <input type="text" id="nama" name="nama" class="form-control" required>

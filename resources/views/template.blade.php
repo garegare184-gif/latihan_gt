@@ -37,30 +37,26 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">🏠 Iuran Warga</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand fw-bold" href="{{ route('home') }}">🏠 Iuran Warga</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="beranda">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link" href="warga">Warga</a></li>
-                <li class="nav-item"><a class="nav-link" href="Iuran">Iuran</a></li>
-                <li class="nav-item"><a class="nav-link" href="profile">Profil</a></li>
-                <li class="nav-item"><a class="nav-link" href="register">Register</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('home') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('warga') ? 'active' : '' }}" href="{{ route('warga.index') }}">Warga</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('iuran') ? 'active' : '' }}" href="{{ route('iuran.index') }}">Iuran</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('profil') ? 'active' : '' }}" href="{{ route('profil.index') }}">Profil</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a></li>
                 <li class="nav-item"><a class="nav-link text-warning" href="/login">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Konten Utama -->
+<!-- Konten -->
 <div class="container py-5">
-    <div class="hero-card text-center mx-auto col-md-8">
-        <h1 class="mb-4">Selamat Datang di Aplikasi Kas Iuran Warga</h1>
-        <p class="lead mb-0">Pantau iuran warga secara mudah dan transparan</p>
-    </div>
+    @yield('content')
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
