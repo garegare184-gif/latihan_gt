@@ -22,7 +22,7 @@
             <td>{{ $warga->email }}</td>
         </tr>
     </table>
-    <a href="{{ route('datawarga.index') }}" class="btn btn-secondary">Kembali</a>
+    <a href="{{ route('profil.index') }}" class="btn btn-secondary">Kembali</a>
 </div>
 </body>
 </html>

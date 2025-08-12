@@ -46,7 +46,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link active" href="beranda">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link" href="warga">Warga</a></li>
-                <li class="nav-item"><a class="nav-link" href="Iuran">Iuran</a></li>
+                <li class="nav-item"><a class="nav-link" href="kategori">Kategori</a></li>
                 <li class="nav-item"><a class="nav-link" href="profile">Profil</a></li>
                 <li class="nav-item"><a class="nav-link" href="register">Register</a></li>
                 <li class="nav-item"><a class="nav-link text-warning" href="/login">Logout</a></li>

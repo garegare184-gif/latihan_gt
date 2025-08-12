@@ -27,20 +27,24 @@
 <div class="container">
     <div class="register-card col-md-6 mx-auto">
         <h3 class="text-center mb-4">Daftar Warga Baru</h3>
-        <form action="/register" method="POST">
+        <form action="/warga/store" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Lengkap</label>
-                <input type="text" id="nama" name="nama" class="form-control" required>
+                <input type="text" id="name" name="name" class="form-control" required>
             </div>
             <div class="mb-3">
+                <label for="nama" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <!-- <div class="mb-3">
                 <label for="alamat" class="form-label">Alamat</label>
                 <textarea id="alamat" name="alamat" class="form-control" required></textarea>
-            </div>
-            <div class="mb-3">
+            </div> -->
+            <!-- <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" id="email" name="email" class="form-control" required>
-            </div>
+            </div> -->
             <div class="mb-3">
                 <label for="password" class="form-label">Kata Sandi</label>
                 <input type="password" id="password" name="password" class="form-control" required>

@@ -45,7 +45,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link {{ request()->is('home') ? 'active' : '' }}" href="{{ route('home') }}">Beranda</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('warga') ? 'active' : '' }}" href="{{ route('warga.index') }}">Warga</a></li>
-                <li class="nav-item"><a class="nav-link {{ request()->is('iuran') ? 'active' : '' }}" href="{{ route('iuran.index') }}">Iuran</a></li>
+                <li class="nav-item"><a class="nav-link {{ request()->is('warga') ? 'active' : '' }}" href="{{ route('warga.index') }}">Kategori</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('profil') ? 'active' : '' }}" href="{{ route('profil.index') }}">Profil</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a></li>
                 <li class="nav-item"><a class="nav-link text-warning" href="/login">Logout</a></li>

@@ -1,3 +1,6 @@
+@extends('template')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,26 +10,42 @@
 </head>
 <body class="bg-light">
 
-<div class="container py-5">
-    <h1 class="text-danger">Selamat Datang, {{ Auth::user()->username }}</h1>
-    <p class="lead">Anda login sebagai <b>Warga</b>.</p>
-    <p>Di sini Anda bisa melihat informasi tagihan dan riwayat pembayaran iuran Anda.</p>
+<div class="container mt-4">
+ 
+    <a href="{{ route('warga.create') }}" class="btn btn-primary mb-3">+ Tambah Warga</a>
 
-    <hr>
+   
+    <h3>Daftar Warga</h3>
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Email</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($user as $item)
+                <tr>
+                    <td>{{ $item + 1 }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->alamat }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>
+                        <a href="{{ route('warga.edit', $warga->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                       
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-    <h3>Menu Warga</h3>
-    <ul class="list-group">
-        <li class="list-group-item">Lihat Tagihan Iuran</li>
-        <li class="list-group-item">Riwayat Pembayaran</li>
-    </ul>
-
-    <hr>
-    <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit" class="btn btn-danger">Logout</button>
-    </form>
-</div>
+ 
+    
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+@endsection
