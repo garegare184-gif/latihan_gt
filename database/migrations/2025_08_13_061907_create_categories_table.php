@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('kategori', function (Blueprint $table) {
-    $table->id();
-    $table->string('name');
-    $table->timestamps();
-});
-
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('periode');
+            $table->integer('nominal');
+            $table->timestamps();
+        });
     }
 
     /**
      * Reverse the migrations.
      */
-   
-
+    public function down(): void
+    {
+        Schema::dropIfExists('categories');
+    }
 };

@@ -11,24 +11,26 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::all();
-        return view('kategori.index', compact('data'));
+        return view('kategori', compact('data'));
     }
 
     // Form tambah kategori
     public function create()
     {
-        return view('kategori.create');
+        return view('kategori_create');
     }
 
     // Simpan kategori baru
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kategori' => 'required|string|max:100'
+            'periode' => 'required|string|max:100',
+            'nominal' => 'required'
         ]);
 
         Category::create([
-            'nama_kategori' => $request->nama_kategori
+            'periode' => $request->periode,
+            'nominal' => $request->nominal,
         ]);
 
         return redirect()->route('kategori.index')->with('success', 'Kategori berhasil ditambahkan');
@@ -38,23 +40,26 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $kategori = Category::findOrFail($id);
-        return view('kategori.edit', compact('kategori'));
+        return view('kategori_edit', compact('kategori'));
     }
 
     // Update kategori
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_kategori' => 'required|string|max:100'
+            'periode' => 'required|string|max:100',
+            'nominal' => 'required'
         ]);
 
         $kategori = Category::findOrFail($id);
         $kategori->update([
-            'nama_kategori' => $request->nama_kategori
+            'periode' => $request->periode,
+            'nominal' => $request->nominal,
         ]);
 
-        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diupdate');
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diperbarui');
     }
+
 
     // Hapus kategori
     public function destroy($id)

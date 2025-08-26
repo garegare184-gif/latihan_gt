@@ -10,17 +10,13 @@ use App\Models\User; // pastikan model User diimport
 
 class LoginController extends Controller
 {
-    /**
-     * Tampilkan form login
-     */
+    
     public function showLoginForm()
     {
         return view('login'); 
     }
 
-    /**
-     * Proses login user
-     */
+    
     public function login(Request $request)
     {
         $request->validate([
@@ -41,27 +37,23 @@ class LoginController extends Controller
         ])->onlyInput('username');
     }
 
-    /**
-     * Tampilkan form register
-     */
+    
     public function showRegisterForm()
     {
-        return view('register'); // arahkan ke resources/views/register.blade.php
+        return view('register'); 
     }
 
-    /**
-     * Proses register user baru
-     */
+    
     public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed', 
-            // confirmed berarti harus ada field password_confirmation di form
+            
         ]);
 
-        // Simpan user baru
+       
         $user = User::create([
             'name' => $request->name,
             'username' => $request->username,
