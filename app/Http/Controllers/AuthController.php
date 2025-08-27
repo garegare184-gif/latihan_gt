@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function showLogin()
+=======
+
+class AuthController extends Controller
+{
+<<<<<<< HEAD
+    //
+}
+=======
+    public function showLoginForm()
+>>>>>>> bc2ad695c0609d92750c1856b833669eeb3001c0
     {
         return view('login');
     }
@@ -37,4 +48,10 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('login');
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> abce05cdbc78c071eb932a0ae02b814f94b169dc
+>>>>>>> bc2ad695c0609d92750c1856b833669eeb3001c0
