@@ -22,6 +22,7 @@
         }
     </style>
 </head>
+<<<<<<< HEAD
 <body>
 
 <div class="container">
@@ -52,6 +53,41 @@
             <button type="submit" class="btn btn-danger w-100">Daftar</button>
         </form>
         <p class="text-center mt-3">Sudah punya akun? <a href="/login">Login</a></p>
+=======
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h3 class="text-center mb-4">Register</h3>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form method="POST" action="{{ url('/register') }}">
+                @csrf
+                <div>
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control" required autofocus>
+                </div>
+                <div>
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" required autofocus>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="text" name="password" class="form-control" required autofocus>
+                </div>
+
+                <button type="submit" class="btn btn-secondary w-100">Register</button>
+            </form>
+            <p>Sudah punya akun? <a href="{{ url('/login') }}">Login di sini</a></p>
+        </div>
+>>>>>>> abce05cdbc78c071eb932a0ae02b814f94b169dc
     </div>
 </div>
 

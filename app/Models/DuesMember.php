@@ -16,4 +16,5 @@ class DuesMember extends Model
     {
         return $this->belongsTo(DuesCategory::class, 'idduescategory');
     }
+    
 }

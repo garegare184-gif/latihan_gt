@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\DuesMember;
 use App\Models\User;
 use App\Models\Warga;
@@ -82,4 +83,14 @@ public function show($id)
 }
 
 
+=======
+use Illuminate\Support\Facades\Auth;
+
+class WargaController extends Controller
+{
+    public function index()
+    {
+        return view('warga.home'); // Sesuaikan dengan nama file blade Anda
+    }
+>>>>>>> abce05cdbc78c071eb932a0ae02b814f94b169dc
 }
