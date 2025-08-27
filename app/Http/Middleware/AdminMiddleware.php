@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthWargaMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,6 +15,11 @@ class AuthWargaMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (auth()->check() && auth()->user()->level === 'admin') {
+            return $next($request);
+        }
+
+        abort(403, 'Unauthorized');
         return $next($request);
     }
 }
