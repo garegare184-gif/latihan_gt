@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PembayaranController;
+use App\Models\Category;
 
 Route::resource('categories', CategoryController::class);
 Route::get('/iuran/create', [IuranController::class, 'create'])->middleware('auth');
@@ -29,7 +30,8 @@ Route::get('/kategori', [CategoryController::class, 'index'])->name('kategori.in
 Route::get('/kategori/create', [CategoryController::class, 'create'])->name('kategori.create');
 Route::post('/kategori/create', [CategoryController::class, 'store'])->name('kategori.store');
 Route::get('/kategori/edit/{id}', [CategoryController::class, 'edit'])->name('kategori.edit');
-Route::put('/kategori/update/{id}', [CategoryController::class, 'update'])->name('kategori.update');
+Route::put('/kategori/update/{id}', [CategoryController::class, 'update'])->name('kategori.update');        
+Route::resource('kategori', CategoryController::class);
 
 Route::get('/pembayaran', [PembayaranController::class, 'showForm'])->name('pembayaran.form');
 Route::post('/pembayaran', [PembayaranController::class, 'process'])->name('pembayaran.submit');
@@ -40,6 +42,8 @@ Route::get('/pembayaran/create', [PembayaranController::class, 'create'])->name(
 Route::post('/pembayaran/create', [PembayaranController::class, 'store'])->name('pembayaran.store');
 Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
 Route::put('/pembayaran/update/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
+Route::post('/pembayaran/status', [PembayaranController::class, 'updateStatus'])->name('pembayaran.updateStatus');
+
 
     Route::get('/warga', [WargaController::class, 'index'])->name('warga.index');
     Route::get('/warga/create', [WargaController::class, 'create'])->name('warga.create');
@@ -47,6 +51,10 @@ Route::put('/pembayaran/update/{id}', [PembayaranController::class, 'update'])->
 
     Route::get('/warga/edit/{id}', [WargaController::class, 'edit'])->name('warga.edit');
     Route::put('/warga/update{id}', [WargaController::class, 'update'])->name('warga.update');
+    // Route::delete('/warga/{id}', [WargaController::class, 'destroy'])->name('warga.destroy');
+    Route::resource('warga', WargaController::class);
+
+
 
 
 Route::get('/', function () {

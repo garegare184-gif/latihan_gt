@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Kas Iuran Warga</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
         body {
             background: linear-gradient(to bottom, #ffe6e6, #fff);
@@ -61,6 +62,36 @@
     <div class="hero-card text-center mx-auto col-md-8">
         <h1 class="mb-4">Selamat Datang di Aplikasi Kas Iuran Warga</h1>
         <p class="lead mb-0">Pantau iuran warga secara mudah dan transparan</p>
+    </div>
+</div>
+
+<!-- Menu 3 Tombol dengan Icon -->
+<div class="container pb-5">
+    <div class="row justify-content-center text-center mt-4">
+        <div class="col-md-3 mb-3">
+            <a href="warga" class="text-decoration-none">
+                <div class="p-4 bg-primary text-white rounded shadow">
+                    <i class="bi bi-people-fill fs-1 mb-2 d-block"></i>
+                    <h5>Daftar Warga</h5>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="pembayaran" class="text-decoration-none">
+                <div class="p-4 bg-danger text-white rounded shadow">
+                    <i class="bi bi-cash-stack fs-1 mb-2 d-block"></i>
+                    <h5>Pembayaran</h5>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="kategori" class="text-decoration-none">
+                <div class="p-4 bg-warning text-white rounded shadow">
+                    <i class="bi bi-tags-fill fs-1 mb-2 d-block"></i>
+                    <h5>Category</h5>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 

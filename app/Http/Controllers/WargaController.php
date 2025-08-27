@@ -28,13 +28,13 @@ public function edit($id) {
 
 public function destroy($id)
 {
-    $decryptId = Crypt::decrypt($id);
-    $warga = Warga::findOrFail($decryptId);
+    $warga = User::findOrFail($id);
     $warga->delete();
 
-    return redirect()->route('warga.index')->with('succes', 'data warga berhasil dihapus.');
-
+    return redirect()->route('warga.index')->with('success', 'Data berhasil dihapus!');
 }
+
+
 
 public function store(Request $request)
 {
@@ -75,5 +75,11 @@ public function store(Request $request)
 
     return redirect()->route('warga.index')->with('success', 'Data warga berhasil diperbarui!');
 }
+public function show($id)
+{
+    $warga = User::findOrFail($id);
+    return view('warga.show', compact('warga'));
+}
+
 
 }

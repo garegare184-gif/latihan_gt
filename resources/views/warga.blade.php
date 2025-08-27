@@ -2,7 +2,16 @@
 @section('content')
 <div class="container mt-4">
 
+    {{-- Tombol tambah warga --}}
     <a href="{{ route('warga.create') }}" class="btn btn-primary mb-3">+ Tambah Warga</a>
+
+    {{-- Pesan sukses kalau ada --}}
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <h4>Daftar Warga</h4>
     <table class="table table-bordered">
         <thead class="table-dark">
@@ -22,7 +31,14 @@
                     <td>{{ $warga->alamat }}</td>
                     <td>{{ $warga->email }}</td>
                     <td>
+       
                         <a href="{{ route('warga.edit', $warga->id) }}" class="btn btn-sm btn-warning">Edit</a>
+
+                        <form action="{{ route('warga.destroy', $warga->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin mau hapus warga ini?')">Hapus</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

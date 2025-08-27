@@ -21,19 +21,23 @@
                 <td>Rp {{ number_format($pembayaran['nominal'], 0, ',', '.') }}</td>
                 <td>{{ now()->format('d-m-Y') }}</td>
                 <td>
-                    @if ($pembayaran['nominal'] > 0)
-                        <span class="badge bg-success">Sudah Bayar</span>
-                    @else
-                        <span class="badge bg-danger">Belum Bayar</span>
-                    @endif
-                </td>
-                <td>
-                    @if ($pembayaran['nominal'] > 0)
-                        <button class="btn btn-sm btn-danger" disabled>Tandai Belum Bayar</button>
-                    @else
-                        <button class="btn btn-sm btn-success" disabled>Tandai Sudah Bayar</button>
-                    @endif
-                </td>
+    @if (isset($pembayaran['status']) && $pembayaran['status'] === 'sudah')
+        <span class="badge bg-success">Sudah Bayar</span>
+    @else
+        <span class="badge bg-danger">Belum Bayar</span>
+    @endif
+</td>
+<td>
+    <form action="{{ route('pembayaran.updateStatus') }}" method="POST">
+        @csrf
+        @if (isset($pembayaran['status']) && $pembayaran['status'] === 'sudah')
+            <button type="submit" class="btn btn-sm btn-danger">Tandai Belum Bayar</button>
+        @else
+            <button type="submit" class="btn btn-sm btn-success">Tandai Sudah Bayar</button>
+        @endif
+    </form>
+</td>
+
             </tr>
         </tbody>
     </table>

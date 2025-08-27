@@ -28,15 +28,35 @@ class PembayaranController extends Controller
         return redirect()->route('pembayaran.konfirmasi');
     }
 
-        public function confirmation(Request $request)
-    {
-        $pembayaran = $request->session()->get('pembayaran');
+public function confirmation(Request $request)
+{
+    $pembayaran = $request->session()->get('pembayaran');
 
-        if (!$pembayaran) {
-            return redirect()->route('pembayaran.konfirmasi')->withErrors('Data pembayaran tidak ditemukan.');
-        }
-
-        return view('pembayaran-konfirmasi', compact('pembayaran'));
+    if (!$pembayaran) {
+        // Arahkan ke form pembayaran kalau data kosong
+        return redirect()->route('pembayaran.form')->withErrors('Data pembayaran tidak ditemukan.');
     }
 
+    return view('pembayaran-konfirmasi', compact('pembayaran'));
 }
+public function updateStatus(Request $request)
+{
+    $pembayaran = $request->session()->get('pembayaran');
+
+    if ($pembayaran) {
+        // Toggle status
+        if (isset($pembayaran['status']) && $pembayaran['status'] === 'sudah') {
+            $pembayaran['status'] = 'belum';
+        } else {
+            $pembayaran['status'] = 'sudah';
+        }
+
+        // Simpan lagi ke session
+        $request->session()->put('pembayaran', $pembayaran);
+    }
+
+    return redirect()->route('pembayaran.konfirmasi');
+}
+
+}
+
