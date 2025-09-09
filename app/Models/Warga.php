@@ -6,5 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Warga extends Model
 {
-    protected $guarded = [];
+    
+
+    protected $fillable = [
+        'username',
+        'name',
+        'alamat',
+        'email',
+        'password',
+    ];
 }
+

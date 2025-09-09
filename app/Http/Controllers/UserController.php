@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
     /**
      * Menampilkan daftar semua user
      */
+    public function export()
+    {
+        return Excel::download(new UserExport, 'users.xlsx');
+    }
     public function index()
     {
         $users = User::all();

@@ -4,7 +4,7 @@
 
     {{-- Tombol tambah warga --}}
     <a href="{{ route('warga.create') }}" class="btn btn-primary mb-3">+ Tambah Warga</a>
-
+    <a href="{{ url('users/export') }}" class="btn btn-succes mb-3"> Export Warga</a>
     {{-- Pesan sukses kalau ada --}}
     @if(session('success'))
         <div class="alert alert-success">
@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($user as $index => $warga)
+            @foreach($warga as $index => $warga)
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $warga->name }}</td>

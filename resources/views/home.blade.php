@@ -31,34 +31,25 @@
             from {opacity: 0; transform: translateY(20px);}
             to {opacity: 1; transform: translateY(0);}
         }
+
+        /* Animasi Selamat Datang */
+        .welcome-text {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 2.2rem;
+            color: #b71c1c;
+            animation: slideIn 2s ease-in-out, pulse 2s infinite;
+        }
+        @keyframes slideIn {
+            from {opacity: 0; transform: translateX(-100px);}
+            to {opacity: 1; transform: translateX(0);}
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
     </style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary mb-4">
-    <div class="container">
-        <a class="navbar-brand" href="#">Dashboard Iuran</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Data Warga</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Data Iuran</a></li>
-                <li class="nav-item"><a class="nav-link text-danger" href="/login">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Kas Iuran Warga</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -87,7 +78,7 @@
 <!-- Konten Utama -->
 <div class="container py-5">
     <div class="hero-card text-center mx-auto col-md-8">
-        <h1 class="mb-4">Selamat Datang di Aplikasi Kas Iuran Warga</h1>
+        <h1 class="mb-4 welcome-text">Selamat Datang di Aplikasi Iuran Warga 🎉</h1>
         <p class="lead mb-0">Pantau iuran warga secara mudah dan transparan</p>
     </div>
 </div>
@@ -115,7 +106,7 @@
             <a href="kategori" class="text-decoration-none">
                 <div class="p-4 bg-warning text-white rounded shadow">
                     <i class="bi bi-tags-fill fs-1 mb-2 d-block"></i>
-                    <h5>Category</h5>
+                    <h5>Kategori</h5>
                 </div>
             </a>
         </div>

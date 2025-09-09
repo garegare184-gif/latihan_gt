@@ -1,49 +1,7 @@
 <?php
-
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-<<<<<<< HEAD
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\WargaController;
-
-
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::post('/login', [AuthController::class, 'login'])->name('login.process');
-
-Route::middleware(['auth', 'warga'])->group(function () {
-    Route::get('/warga/dashboard', [WargaController::class, 'dashboard'])->name('warga.dashboard');
-});
-
-Route::middleware(['admin'])->group(function () {
-    
-    Route::get('/admin/dasboard', [AdminController::class, 'index']);
-
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-
-    Route::get('/warga', [AdminController::class, 'indexWarga'])->name('admin.warga.index');
-    Route::post('/warga', [AdminController::class, 'storeWarga'])->name('admin.warga.store');
-    Route::get('/warga/{id}/edit', [AdminController::class, 'editWarga'])->name('admin.warga.edit');
-    Route::put('/warga/{id}', [AdminController::class, 'updateWarga'])->name('admin.warga.update');
-    Route::delete('/warga/{id}', [AdminController::class, 'destroyWarga'])->name('admin.warga.destroy');
-
-    Route::post('/kategori', [AdminController::class, 'storeCategory'])->name('admin.kategori.store');
-    Route::delete('/kategori/{id}', [AdminController::class, 'destroyCategory'])->name('admin.kategori.destroy');
-    Route::get('/kategori', [AdminController::class, 'indexKategori'])->name('admin.kategori.index');
-    Route::get('/admin/kategori/{id}/edit', [AdminController::class, 'edit'])->name('admin.kategori.edit');
-    Route::put('/admin/kategori/{id}', [AdminController::class, 'update'])->name('admin.kategori.update');
-
-
-    Route::put('/pembayaran/{id}', [AdminController::class, 'updatePayment'])->name('admin.pembayaran.update');
-    Route::delete('/pembayaran/{id}', [AdminController::class, 'destroyPayment'])->name('admin.pembayaran.destroy');
-    Route::get('/pembayaran', [AdminController::class, 'indexPayment'])->name('admin.pembayaran.index');
-    Route::post('/pembayaran', [AdminController::class, 'store'])->name('admin.pembayaran.store');
-
-
-});
-=======
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IuranController;
 use App\Http\Controllers\ProfilController;
@@ -53,6 +11,8 @@ use App\Http\Controllers\WargaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PembayaranController;
 use App\Models\Category;
+
+Route::get('users/export/', [UserController::class, 'export']);
 
 Route::resource('categories', CategoryController::class);
 Route::get('/iuran/create', [IuranController::class, 'create'])->middleware('auth');
@@ -101,13 +61,11 @@ Route::post('/pembayaran/status', [PembayaranController::class, 'updateStatus'])
 Route::get('/', function () {
     return view('beranda'); 
 });
-Route::get('/warga', [WargaController::class, 'index'])->name('warga.index')
-    ->middleware('auth');
+// Route::get('/warga', [WargaController::class, 'index'])->name('warga.index')
+    // ->middleware('auth');
 
 
 Route::get('/home',[HomeController::class, 'index'])->name('home');
 Route::get('/admin', function () {
     return view('admin');
-})->middleware('auth');
-    
->>>>>>> bc2ad695c0609d92750c1856b833669eeb3001c0
+})->middleware('auth'); 

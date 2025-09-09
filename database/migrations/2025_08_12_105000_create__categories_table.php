@@ -9,8 +9,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->id();     
+            $table->string('periode');    // Bulanan, Mingguan, Tahunan
+            $table->integer('nominal');   // nilai iuran
             $table->timestamps();
         });
     }
